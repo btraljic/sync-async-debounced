@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
 import { flushSync } from 'react-dom';
 import {
-  unstable_scheduleCallback
+  unstable_scheduleCallback,
+  unstable_getFirstCallbackNode,
+  unstable_cancelCallback,
 } from 'scheduler';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -21,10 +23,6 @@ class App extends PureComponent {
   state = {
     chars: 0,
     SAD: 'Sync',
-  }
-
-
-  componentDidUpdate = () => {
   }
 
 
@@ -50,17 +48,20 @@ class App extends PureComponent {
 
 
   handleChange = (e) => {
-    console.log('handleChange');
     const chars = e.target.value.length;
 
     switch (this.state.SAD) {
       case 'Async':
+        const firstNode = unstable_getFirstCallbackNode();
+        if (firstNode) {
+          unstable_cancelCallback(firstNode);
+        }
+        
         unstable_scheduleCallback(() => {
           this.setState({ chars });
         });
         break;
       case 'Debounced':
-        console.log('Debounced');
         this.debounceHandleChange(chars);
         break;
       default:
@@ -70,7 +71,7 @@ class App extends PureComponent {
 
 
   render() {
-    console.log('render');
+    console.log('render string length:', this.state.chars);
     const data = getData(this.state.chars);
 
     return (
