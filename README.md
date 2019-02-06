@@ -1,3 +1,39 @@
+## sync-async-debounced (React Time Slicing)
+
+After I have seen Dan Abramov's presentation [Beyond React 16](https://www.youtube.com/watch?v=nLF0n9SACd4) in JSConf Iceland 2018 I was interested in Time Slicing. I tried to create an application that was shown in the presentation. That made me to study the React code and especially [Scheduler](https://github.com/facebook/react/blob/master/packages/scheduler/src/Scheduler.js) package. 
+
+Scheduler package is still in the early stages of development and I do not know which direction to go, but it is definitely a useful improvement of the react library (framework?).  
+I will try to be up to date with the development. It is currently compliant with version 16.7.0 
+
+Demo: https://btraljic.github.io/sync-async-debounced/  
+GitHub repo: https://github.com/btraljic/sync-async-debounced 
+
+At first, I used `unstable_scheduleCallback`:  
+```javascript
+unstable_scheduleCallback(() => { 
+  this.setState({ chars }); 
+});
+```
+(`chars` contain string length that determines the complexity of the charts) 
+
+Time Slicing worked properly, but, for this example, with unnecessary schedule render. In the example, we are only interested in the last state of the charts. So, I upgraded the logic using `unstable_getFirstCallbackNode` and `unstable_cancelCallback` and eliminated unnecessary rendering: 
+```javascript(chars contain string length that determines the complexity of the charts) 
+const firstNode = unstable_getFirstCallbackNode(); 
+
+if (firstNode) { 
+  unstable_cancelCallback(firstNode); 
+}
+
+unstable_scheduleCallback(() => { 
+  this.setState({ chars }); 
+});
+```
+I will try to track the development of Time Slicing. Feel free to join.
+  
+  
+  
+##
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
