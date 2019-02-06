@@ -56,7 +56,7 @@ class App extends PureComponent {
         if (firstNode) {
           unstable_cancelCallback(firstNode);
         }
-        
+
         unstable_scheduleCallback(() => {
           this.setState({ chars });
         });

@@ -19,7 +19,7 @@ import config from './config';
 
 class Charts extends PureComponent {
   state = {
-    isChartDisabled: [false, false, false, false],
+    isChartDisabled: [false, false, false, true],
   };
 
 
@@ -47,9 +47,9 @@ class Charts extends PureComponent {
             className={this.state.isChartDisabled[0] ? 'disable-chart' : ''}
             onClick={() => this.handleClick(0)}
           >
-            <VictoryChart>
+            <VictoryChart domain={{ y: [0, 300] }}>
               <VictoryLabel
-                text={this.state.isChartDisabled[0] ? 'Click to enable chart rendering' : 'Click to disable chart rendering'}
+                text={this.state.isChartDisabled[0] ? 'Click to enable scatter chart rendering' : 'Click to disable scatter chart rendering'}
                 textAnchor="start"
                 verticalAnchor="start"
                 dy={15}
@@ -68,9 +68,9 @@ class Charts extends PureComponent {
             className={this.state.isChartDisabled[1] ? 'disable-chart' : ''}
             onClick={() => this.handleClick(1)}
           >
-            <VictoryChart>
+            <VictoryChart domain={{ y: [0, 300] }}>
               <VictoryLabel
-                text={this.state.isChartDisabled[1] ? 'Click to enable chart rendering' : 'Click to disable chart rendering'}
+                text={this.state.isChartDisabled[1] ? 'Click to enable bar chart rendering' : 'Click to disable bar chart rendering'}
                 textAnchor="start"
                 verticalAnchor="start"
                 dy={15}
@@ -91,9 +91,9 @@ class Charts extends PureComponent {
             className={this.state.isChartDisabled[2] ? 'disable-chart' : ''}
             onClick={() => this.handleClick(2)}
           >
-            <VictoryChart>
+            <VictoryChart domain={{ y: [0, 300] }}>
               <VictoryLabel
-                text={this.state.isChartDisabled[2] ? 'Click to enable chart rendering' : 'Click to disable chart rendering'}
+                text={this.state.isChartDisabled[2] ? 'Click to enable line chart rendering' : 'Click to disable line chart rendering'}
                 textAnchor="start"
                 verticalAnchor="start"
                 dy={15}
@@ -115,9 +115,9 @@ class Charts extends PureComponent {
             className={this.state.isChartDisabled[3] ? 'disable-chart' : ''}
             onClick={() => this.handleClick(3)}
           >
-            <VictoryChart>
+            <VictoryChart domain={{ y: [0, 1300] }}>
               <VictoryLabel
-                text={this.state.isChartDisabled[3] ? 'Click to enable chart rendering' : 'Click to disable chart rendering'}
+                text={this.state.isChartDisabled[3] ? 'Click to enable area chart rendering' : 'Click to disable area chart rendering'}
                 textAnchor="start"
                 verticalAnchor="start"
                 dy={15}
