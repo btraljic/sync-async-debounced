@@ -117,7 +117,7 @@ class App extends PureComponent {
             <Col xs={12}>
               <FormControl
                 type="text"
-                placeholder="longer input → more components and DOM nodes"
+                placeholder="(react 16.8.2) longer input → more components and DOM nodes"
                 size="lg"
                 onChange={(e) => this.handleChange(e)}
               />
