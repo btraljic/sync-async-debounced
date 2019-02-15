@@ -1,6 +1,6 @@
 ## sync-async-debounced (React Time Slicing)
 
-After I have seen Dan Abramov's presentation [Beyond React 16](https://www.youtube.com/watch?v=nLF0n9SACd4) in JSConf Iceland 2018 I was interested in Time Slicing. I tried to create an application that was shown in the presentation. That made me to study the React code and especially [Scheduler](https://github.com/facebook/react/blob/master/packages/scheduler/src/Scheduler.js) package. 
+After I have seen Dan Abramov's presentation [Beyond React 16](https://www.youtube.com/watch?v=nLF0n9SACd4) in JSConf Iceland 2018 I was interested in Time Slicing. I tried to create an application that was shown in the presentation. That made me study React code and especially [Scheduler](https://github.com/facebook/react/blob/master/packages/scheduler/src/Scheduler.js) package. 
 
 Scheduler package is still in the early stages of development and I do not know which direction to go, but it is definitely a useful improvement of the react library (framework?).  
 I will try to be up to date with the development. It is currently compliant with version 16.7.0 
